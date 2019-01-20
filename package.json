@@ -5,6 +5,7 @@
   "homepage": "https://github.com/danguilherme/uno#readme",
   "main": "dist/main.js",
   "scripts": {
+    "docs": "typedoc --mode file --out docs/api/ src/",
     "build:web": "webpack --config webpack.config.js",
     "build": "yarn run tslint && yarn run build:ts",
     "build:ts": "tsc --declaration",

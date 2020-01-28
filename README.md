@@ -1,6 +1,6 @@
 # UNO
 
-> Uno game implemented in JavaScript
+Uno game implemented in JavaScript.
 
 [![npm package](https://img.shields.io/npm/v/uno-engine.svg?label=uno-engine)](https://www.npmjs.com/package/uno-engine)
 [![Build Status](https://img.shields.io/travis/danguilherme/uno/master.svg)](https://travis-ci.org/danguilherme/uno)
@@ -33,22 +33,19 @@ import { Game } from 'uno-engine';
 ```
 
 ### New Game
-
 ```ts
 const players = ['Player 1', 'Player 2', 'etc.']; // maximum 10 players with unique names
-const customRules = [CumulativeDrawTwo]; // you can add your own rules (see https://github.com/danguilherme/uno/tree/v0.1.0-alpha/src/house-rules)
-const game = new Game(players, customRules); // initialize the game
+const customRules = [CumulativeDrawTwo];          // you can add your own rules (see https://github.com/danguilherme/uno/tree/v0.1.0-alpha/src/house-rules)
+const game = new Game(players, customRules);      // initialize the game
 ```
-
 After starting a new game, the first card will be randomly chosen, hands of 7 dealt, and a player will be randomly chosen to go first.
 
 ### Player Properties
-
 ```ts
-const player = game.currentPlayer; // player whose turn it is
-const hand = player.hand; // array of `Card` objects
-const p = game.getPlayer('Player 1'); // get player by name
-const card = player.getCardByValue(value); // get the exact card in the player's hand
+const player = game.currentPlayer;          // player whose turn it is
+const hand = player.hand;                   // array of `Card` objects
+const p = game.getPlayer("Player 1");       // get player by name
+const card = player.getCardByValue(value);  // get the exact card in the player's hand
 ```
 
 ### Card Properties
@@ -56,15 +53,15 @@ const card = player.getCardByValue(value); // get the exact card in the player's
 ```ts
 import { Colors, Values } from 'uno-engine';
 
-const card = game.discardedCard; // current card in-play
-const cardColor = card.color; // get the index of the card color: 0 to 3
-// (WILD and WILD DRAW FOUR will not have this property set)
-Colors[cardColor]; // get the name of the color: RED, BLUE, GREEN, or YELLOW
+const card = game.discardedCard;  // current card in-play
+const cardColor = card.color;     // get the index of the card color: 0 to 3
+                                  // (WILD and WILD DRAW FOUR will not have this property set)
+Colors[cardColor];                // get the name of the color: RED, BLUE, GREEN, or YELLOW
 
 // Card value
 const cardValue = card.value; // get the index of the card value: 0 to 14
-Values[cardValue]; // get the name of the card:
-// 0-9, SKIP, REVERSE, DRAW_TWO, WILD, or WILD_DRAW_TWO
+Values[cardValue];            // get the name of the card:
+                              // 0-9, SKIP, REVERSE, DRAW_TWO, WILD, or WILD_DRAW_TWO
 
 // Get card from value/color strings
 const value = Values.SIX;
@@ -72,9 +69,9 @@ const color = Colors.BLUE;
 const card = new Card(value, color);
 
 // Set WILD or WD4 color
-const [color, value] = ['GREEN', 'WILD']; // get args from player input
-const card = player.getCardByValue(value); // get exact WILD/WD4 in player's hand
-card.color = Colors[color]; // set color of WILD/WD4 in hand
+const [color, value] = ['GREEN', 'WILD'];   // get args from player input
+const card = player.getCardByValue(value);  // get exact WILD/WD4 in player's hand
+card.color = Colors[color];                 // set color of WILD/WD4 in hand
 
 // Get Card from args function
 const getCard = ([color, value], player) => {
@@ -108,14 +105,14 @@ try {
 }
 
 // Yelling UNO!
-game.uno(); // game.currentPlayer is yelling UNO!
-game.uno('Player 1'); // Other than current player yells UNO
-// - If the yelling player is the current player,
-//   and they have 2 or less cards, he is just marked as "yelled"
-// - If the yelling player has more than 2 cards,
-//   the game searches for someone with 1 card that did not yell "UNO!",
-//   and make him draw 2 cards. If there's no one,
-//   the yelling player draws instead.
+game.uno();           // game.currentPlayer is yelling UNO!
+game.uno("Player 1"); // Other than current player yells UNO
+                      // - If the yelling player is the current player,
+                      //   and they have 2 or less cards, he is just marked as "yelled"
+                      // - If the yelling player has more than 2 cards,
+                      //   the game searches for someone with 1 card that did not yell "UNO!",
+                      //   and make him draw 2 cards. If there's no one,
+                      //   the yelling player draws instead.
 ```
 
 ### Game Events

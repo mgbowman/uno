@@ -10,7 +10,7 @@ describe('House Rule: Cumulative draw two', function() {
     game.newGame();
   });
 
-  it('should force player to draw after a DRAW TWO', function() {
+  it('forces player to draw after a DRAW TWO', function() {
     let curr = game.currentPlayer;
     const discardedCard = game.discardedCard;
     const drawTwo = new Card(Values.DRAW_TWO, discardedCard.color);
@@ -35,7 +35,7 @@ describe('House Rule: Cumulative draw two', function() {
     expect(game.currentPlayer.name).not.toBe(curr.name);
   });
 
-  it('should stack DRAW TWO values', function() {
+  it('stacks DRAW TWO values', function() {
     let curr = game.currentPlayer;
     const discardedCard = game.discardedCard;
     const drawTwo = new Card(Values.DRAW_TWO, discardedCard.color);
@@ -61,7 +61,7 @@ describe('House Rule: Cumulative draw two', function() {
     expect(game.currentPlayer.name).not.toBe(curr.name);
   });
 
-  it('should not interfere if no DRAW TWO is played', () => {
+  it('does not interfere if no DRAW TWO is played', () => {
     let curr = game.currentPlayer;
     const discardedCard = game.discardedCard;
     const reverse = new Card(Values.REVERSE, discardedCard.color);
